@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>College Database Front End</title>
+	<style>
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type="text"],
+		input[type="password"] {
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin-bottom: 10px;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>College Database Front End</h1>
+	<form method="POST">
+		<label for="roll_no">Roll No:</label>
+		<input type="text" id="roll_no" name="roll_no" required>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required>
+		<input type="submit" name="submit" value="Submit">
+	</form>
+
+	<?php
+        // Connect to the database
+        $servername = "localhost";
+        $username = "your_username";
+        $password = "your_password";
+        $dbname = "your_database";
+
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+
+        // Retrieve data from the database
+        $sql = "SELECT * FROM your_table";
+        $result = mysqli_query($conn, $sql);
+
+        // Display the data on a new page
+        echo "<html><body>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "ID: " . $row["id"] . "<br>";
+            echo "Name: " . $row["name"] . "<br>";
+            echo "Email: " . $row["email"] . "<br>";
+            echo "<br>";
+        }
+        echo "</body></html>";
+
+        // Close the database connection
+        mysqli_close($conn);
+    ?>
+
+</body>
+</html>
