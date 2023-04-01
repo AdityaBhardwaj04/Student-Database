@@ -4,6 +4,11 @@
 <head>
   <title>Login</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+	body{
+    background-color: #b59da4;
+  }
+  </style>
 </head>
 <body>
   <div class="header">

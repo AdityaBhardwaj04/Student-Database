@@ -2,6 +2,11 @@
 <html>
     <head>
         <style>
+            #logout{
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+            }
             #register-link {
                 position: absolute;
                 top: 10px;
@@ -25,26 +30,26 @@
             h1{
                 text-align: center;
             }
+            body{
+                background-color: rgb(216, 238, 165);
+            }
         </style>
     </head>
     <body>
-        <h1>Welcome to the database `lavabul bitches`!!!</h1>
+        <h1>Welcome to the database!!!</h1>
 
         <?php
         session_start();
 
-        // initializing variables
         $roll = "";
         $errors = array();
 
-        // connect to the database
         $db = mysqli_connect('localhost', 'root', '', 'project');
 
         if (!$db) {
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        // check if user is logged in
         if (isset($_SESSION['roll'])) {
             $roll = $_SESSION['roll'];
             $user_check_query = "SELECT * FROM users WHERE roll='$roll' LIMIT 1";
@@ -56,11 +61,10 @@
 
             $user = mysqli_fetch_assoc($result);
 
-            // if user is an admin, show whole database
             if ($user['user_type'] === 'admin') {
                 $sql = "SELECT name, roll, phone, cgpa, email, address FROM users ORDER BY roll";
             } else {
-                // if user is not an admin, show only their data
+
                 $sql = "SELECT name, roll, phone, cgpa, email, address FROM users ORDER BY roll";
             }
 
@@ -79,7 +83,8 @@
 
                 }
                 echo "</table>";
-            } else {
+                echo"<a id='logout' href='login.php'>Logout</a>";
+            }else{
                 echo "0 results";
             }
         } else {
