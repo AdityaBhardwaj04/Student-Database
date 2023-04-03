@@ -6,11 +6,15 @@
                 position: absolute;
                 bottom: 10px;
                 right: 10px;
+                background-color: orange;
+                font-size: 1.4rem;
             }
             #register-link {
                 position: absolute;
                 top: 10px;
                 right: 10px;
+                background-color: Burlywood;
+                font-size: 1.4rem;
             }
             table {
                 position: absolute;
@@ -33,10 +37,14 @@
             body{
                 background-color: rgb(216, 238, 165);
             }
+            a:link{
+                text-decoration: none;
+                color: black;
+            }
         </style>
     </head>
     <body>
-        <h1>Welcome to the database!!!</h1>
+        <h1>Welcome to the Database!!!</h1>
 
         <?php
         session_start();
